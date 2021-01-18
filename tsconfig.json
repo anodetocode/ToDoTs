@@ -1,0 +1,11 @@
+{
+  "extends": "@tsconfig/node14/tsconfig.json",
+  "compilerOptions": {
+    "preserveConstEnums": true,
+    "rootDir": "src",
+    "outDir": "build",
+    "removeComments": true,
+    "allowJs": true
+  },
+  "exclude": ["node_modules", "**/*.spec.ts"],
+}
