@@ -1,4 +1,7 @@
-import Task from './task';
+export interface Task {
+  taskName: string,
+  isDone: boolean
+}
 
 abstract class TodoState {
   public tasks: Task[];
@@ -14,6 +17,10 @@ abstract class TodoState {
 }
 
 export default class TodoList extends TodoState {
+  static createTask(taskName: string) {
+    return { taskName, isDone: false };
+  }
+
   addTask(task: Task) {
     this.tasks.push(task);
   }
@@ -25,7 +32,11 @@ export default class TodoList extends TodoState {
     }
   }
 
-  completeTask(task: Task) {}
+  completeTask(task: Task) {
+    task.isDone = true;
+  }
 
-  undoTask(task: Task) {}
+  undoTask(task: Task) {
+    task.isDone = false;
+  }
 }
