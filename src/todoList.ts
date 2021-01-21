@@ -39,4 +39,8 @@ export default class TodoList extends TodoState {
   undoTask(task: Task) {
     task.isDone = false;
   }
+
+  changeTask(task: Task, newTask: string) {
+    task.taskName = newTask;
+  }
 }
