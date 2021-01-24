@@ -5,7 +5,8 @@
     "rootDir": "src",
     "outDir": "build",
     "removeComments": true,
-    "allowJs": true
+    "allowJs": true,
+    "lib": [ "DOM" ]
   },
   "exclude": ["node_modules", "**/*.spec.ts"],
 }
