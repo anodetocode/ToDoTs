@@ -1,12 +1,15 @@
 {
-  "extends": "@tsconfig/node14/tsconfig.json",
   "compilerOptions": {
     "preserveConstEnums": true,
     "rootDir": "src",
     "outDir": "build",
     "removeComments": true,
     "allowJs": true,
-    "lib": [ "DOM" ]
+    "lib": [ "DOM", "ES2017" ],
+    "target": "ES2017",
+    "skipLibCheck": true,
+    "strict": true,
+    "esModuleInterop": true,
   },
-  "exclude": ["node_modules", "**/*.spec.ts"],
+  "exclude": ["node_modules", "**/*.spec.ts", "jest.config.js", "build"],
 }

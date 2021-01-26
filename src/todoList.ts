@@ -10,19 +10,17 @@ abstract class TodoState {
     this.tasks = [];
   }
 
-  abstract addTask(task: Task): void;
+  abstract addTask(taskName: string): Task;
   abstract removeTask(task: Task): void;
   abstract completeTask(task: Task): void;
   abstract undoTask(task: Task): void;
 }
 
 export default class TodoList extends TodoState {
-  static createTask(taskName: string) {
-    return { taskName, isDone: false };
-  }
-
-  addTask(task: Task) {
+  addTask(taskName: string) {
+    const task = { taskName, isDone: false };
     this.tasks.push(task);
+    return task;
   }
 
   removeTask(task: Task) {
