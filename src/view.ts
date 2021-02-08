@@ -6,6 +6,7 @@ export default class View {
   public allFilterButton = this.query('#allFilterButton');
   public toDoFilterButton = this.query('#toDoFilterButton');
   public doneFilterButton = this.query('#doneFilterButton');
+  public taskNumberElement = this.query('#taskNumber');
 
   private query(selector: string) {
     return document.querySelector(selector);

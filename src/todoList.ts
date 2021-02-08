@@ -41,6 +41,7 @@ export default class TodoList {
 
     // Clear from previous builds
     this.clearForm();
+    this.render();
   }
 
   private update() {
@@ -90,22 +91,25 @@ export default class TodoList {
   // private render(eventData: any) {}
 
 
-
   private render() {
     let div = document.createElement('div');
     let reducer = (parent: any, child: any) => { parent.appendChild(child); return parent };
     let taskElements = this.filteredTasks().map(task => this.newTaskElement(task));
     let tasksElement = taskElements.reduce(reducer, div);
 
-    console.log(tasksElement.children);
     //@ts-ignore
     this.view.taskList?.innerHTML = '';
     this.view.taskList?.appendChild(tasksElement);
-    this.view.log.innerHTML = JSON.stringify(this.state, null, 2);
+
+    //@ts-ignore
+    this.view.taskNumberElement?.innerHTML = `Num of tasks: ${this.filteredTasks().length}`;
+
+    // this.view.log.innerHTML = JSON.stringify(this.state, null, 2);
   }
 
   public newTaskElement(task: Task) {
     const taskElement = document.createElement('div');
+    taskElement.classList.add('task');
 
     const doneButton = document.createElement('button');
     doneButton.innerHTML = 'Done';
@@ -132,6 +136,7 @@ export default class TodoList {
     return taskElement;
   }
 
+  // some how turn this into a computed property?
   private filteredTasks(): Task[] {
     switch (this.state.taskFilter) {
       case TaskFilter.todo:
