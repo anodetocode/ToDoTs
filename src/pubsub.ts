@@ -5,7 +5,7 @@ export interface IPubSub {
   subscribers: Map<string, CallbackFn[]>;
 
   on: (eventName: string, callback: any) => void;
-  emit: (eventName: string, eventData: any) => void;
+  emit: (eventName: string, eventData?: any) => void;
   register: (eventName: string) => void;
 }
 
@@ -16,7 +16,7 @@ export default class PubSub implements IPubSub {
 
   register(eventName: string) {
     if (this.events.has(eventName)) {
-      throw new Error(`Event ${eventName} does already exist.`);
+      throw new Error(`Event ${eventName} already exists.`);
     }
 
     this.events.add(eventName);
@@ -26,7 +26,7 @@ export default class PubSub implements IPubSub {
 
   on(eventName: string, callback: any) {
     if (!this.events.has(eventName)) {
-      throw new Error(`Event ${eventName} not registered.`);
+      this.register(eventName);
     }
 
     if (typeof callback !== "function") {
@@ -41,7 +41,7 @@ export default class PubSub implements IPubSub {
     subscribers!.push(callback);
   }
 
-  emit(eventName: string, eventData: any) {
+  emit(eventName: string, eventData?: any) {
     if (!this.events.has(eventName)) {
       throw new Error(`Event ${eventName} doesn't exist.`);
     }

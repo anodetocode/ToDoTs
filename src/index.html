@@ -2,17 +2,27 @@
 <head>
   <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
   <meta content="utf-8" http-equiv="encoding">
-  <!-- defer -->
   <script defer src="./index.ts"></script>
+  <!-- link not working -->
+  <link rel="stylesheet" src="./index.css">
+  <style>
+    p[done="true"] {
+      text-decoration: line-through;
+    }
+  </style>
 </head>
 <body>
-  <div id="todoList"></div>
+  <span>
+    <button id="allFilterButton">All</button>
+    <button id="toDoFilterButton">To do</button>
+    <button id="doneFilterButton">Done</button>
+  </span>
   <div class="addForm">
     <input type="text" id="taskTextField" name="task">
     <Button id="addButton">Add</Button>
   </div>
+  <div id="todoList"></div>
 
-  <pre class="log">
-    </pre>
+  <pre class="log"></pre>
 </body>
 </html>
